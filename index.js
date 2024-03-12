@@ -1,9 +1,12 @@
-const express = require('express')
+const express = require('express');
 const app = express();
+const cors = require ('cors');
+const mysql2 = require('mysql2')
 
 const db = require('./models');
 
 app.use(express.json());
+
 app.set('view engine', 'ejs');
 app.use((request,response,next)=>{
     response.setHeader('Access-Control-Allow-Origin',"*");
@@ -13,6 +16,7 @@ app.use((request,response,next)=>{
     next();
 })
 
+//Routes
 const movieRouter = require('./routes/movieRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 
